@@ -276,23 +276,6 @@ utc_time: DateTime<Utc>, button_labels: (String, String), button_urls: (String, 
       .style(ButtonStyle::Primary)
       .emoji(button_emojis.1.clone()),
     ];
-    // let mut buttons: &mut CreateComponents = &mut serenity::builder::CreateButton::new();
-    // let mut buttons = CreateButton::;
-    // buttons = buttons
-    //   .create_action_row(|r| {
-    //     r.create_button(|b| {
-    //       b.label(button_labels.0.clone())
-    //       .url(button_urls.0.clone())
-    //       .style(ButtonStyle::Link)
-    //       .emoji(button_emojis.0.clone())
-    //     })
-    //     .create_button(|b| {
-    //       b.label(button_labels.1.clone())
-    //       .url(button_urls.1.clone())
-    //       .style(ButtonStyle::Link)
-    //       .emoji(button_emojis.1.clone())
-    //     })
-    // });
 
     let role_id = discord_pinged_role.unwrap();
     if role_id != 0 {
