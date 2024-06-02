@@ -2,7 +2,7 @@ use std::{
   sync::Arc, thread, time::Duration
 };
 use chrono::{
-  DateTime, Utc, NaiveDateTime
+  DateTime, Utc
 };
 use serenity::{
   all::{
@@ -238,8 +238,7 @@ pub async fn discord_send_updates(http: Arc<Http>, module: &ModuleConfig, update
 }
 
 pub fn unix_to_datetime(timestamp: f64) -> DateTime<Utc> {
-  let naive_datetime = NaiveDateTime::from_timestamp_opt(timestamp as i64, 0).unwrap();
-  DateTime::from_naive_utc_and_offset(naive_datetime, Utc)
+  DateTime::from_timestamp(timestamp as i64, 0).unwrap()
 }
 
 pub fn limit_string_length(input: &str, limit: usize) -> String {
