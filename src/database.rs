@@ -173,7 +173,7 @@ impl Database {
     let channel_table_name = format!("_{}_{}_{}", ModuleType::Discord, discord_bot_id, discord_channel_id);
 
     sqlx::query(format!(r#"DELETE FROM {:?} WHERE Channel = {:?}"#, index_table_name, discord_channel_id).as_str()).execute(&self.database).await.unwrap();
-    sqlx::query(format!(r#"DROP TABLE {:?}"#, channel_table_name).as_str()).execute(&self.database).await.unwrap();
+    sqlx::query(format!(r#"DROP TABLE {:?}"#, channel_table_name).as_str()).execute(&self.database).await.ok();
   }
 
   pub async fn pause_discord_channel(&mut self, discord_bot_id: &String, discord_channel_id: u64, mode: bool) {

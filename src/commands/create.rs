@@ -73,7 +73,7 @@ pub async fn run(options: &[CommandDataOption], discord_bot_id: &String, databas
 
 pub fn register() -> CreateCommand {
   CreateCommand::new("create")
-    .description("Setup notifications for the current channel")
+    .description("Setup notifications for a channel")
     .add_option(
       CreateCommandOption::new(
         CommandOptionType::Channel,
@@ -89,8 +89,8 @@ pub fn register() -> CreateCommand {
         "url",
         "Nyaa URL separated by `,` (f.e.: `https://nyaa.si/user/neoborn, https://nyaa.si/user/djatom`)"
       )
-    .min_length(5)
-    .required(true)
+      .min_length(5)
+      .required(true)
     )
     .add_option(
       CreateCommandOption::new(

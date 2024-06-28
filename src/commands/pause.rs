@@ -9,7 +9,7 @@ use crate::database::Database;
 
 pub async fn run(options: &[CommandDataOption], discord_bot_id: &String, database_pool: Pool<Sqlite>) -> String {
   let channel_id = match options.get(0).unwrap().value {
-    CommandDataOptionValue::Integer(integer) => integer as u64,
+    CommandDataOptionValue::Channel(integer) => integer.get(),
     _ => {
       panic!("Discord returned invalid command options.")
     }
@@ -44,8 +44,8 @@ pub fn register() -> CreateCommand {
       CommandOptionType::Channel,
       "channel",
       "Channel to receive the notifications"
-    )
-        .channel_types([ChannelType::Text].to_vec())
-        .required(true)
+      )
+      .channel_types([ChannelType::Text].to_vec())
+      .required(true)
   )
 }
