@@ -120,6 +120,8 @@ impl Web {
                   if torrent.comments.is_empty() {
                     if let Ok(full_torrent) = self.get_torrent(torrent.clone()) {
                       *torrent = full_torrent.clone();
+                    } else {
+                      continue;
                     }
                   }
                   let mut update: NyaaTorrent = torrent.clone();
@@ -140,6 +142,8 @@ impl Web {
                   if torrent.comments.is_empty() {
                     if let Ok(full_torrent) = self.get_torrent(torrent.clone()) {
                       *torrent = full_torrent.clone();
+                    } else {
+                      continue;
                     }
                   }
                   let mut update: NyaaTorrent = torrent.clone();
@@ -165,6 +169,8 @@ impl Web {
                 for comment in torrent.comments.iter_mut() {
                   comment.update_type = NyaaCommentUpdateType::NEW;
                 }
+              } else {
+                continue;
               }
             }
 
